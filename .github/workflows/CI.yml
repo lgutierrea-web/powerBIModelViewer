@@ -1,21 +1,32 @@
+
 name: CI
 
-on: [push]
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
-  windows:
-    runs-on: windows-latest
+  build:
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2-beta
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '14.7'
-      - name: Install Power BI tools
-        run: npm install -g powerbi-visuals-tools
-        shell: powershell
-      - name: Install npm packages
-        run: npm install
-        shell: powershell
-      - name: Package custom viz
-        run: pbiviz package
-        shell: powershell
+          node-version: '20'
+
+      - name: Instalar dependencias
+        run: npm install --legacy-peer-deps
+
+      - name: Compilar visual Power BI
+        run: npx pbiviz package
+
+      - name: Guardar archivo PBIVIZ
+        uses: actions/upload-artifact@v4
+        with:
+          name: QSK60-PowerBI-3D-Viewer
+          path: dist/*.pbiviz
+          if-no-files-found: error
