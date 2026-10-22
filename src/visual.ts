@@ -75,6 +75,16 @@ export class Visual implements IVisual {
 
         this.modelViewers = new Map<string,ModelViewer>();
         this.target.appendChild(this.parentDiv);
+const diagnostic = document.createElement("div");
+diagnostic.id = "qsk60-diagnostic";
+diagnostic.style.cssText =
+    "position:absolute;top:35px;right:8px;z-index:9999;" +
+    "background:#17212b;color:#ffffff;padding:10px;" +
+    "font:12px Arial;max-width:360px;white-space:pre-wrap;" +
+    "border:1px solid #e53935;border-radius:5px;";
+diagnostic.textContent = "DIAGNÓSTICO QSK60: visual iniciado";
+this.target.appendChild(diagnostic);
+
         this.selectionManager = this.host.createSelectionManager();
     }
 
@@ -135,7 +145,14 @@ export class Visual implements IVisual {
                 found.Div = document.createElement("div");
                 self.parentDiv.appendChild(found.Div);
                 found.Div.appendChild(found.Viewer);
-                found.Viewer.src = found.SrcPath;
+                 const diagnostic = document.getElementById("qsk60-diagnostic");  const report = (message: string) => {     if (diagnostic) {         diagnostic.textContent = message;     } };  report(     "DIAGNÓSTICO QSK60
+" +     "URL: " + found.SrcPath + "
+" +     "Componente registrado: " +     (customElements.get("model-viewer") ? "SÍ" : "NO") +     "
+Estado: esperando carga..." );  found.Viewer.addEventListener("load", () => {     report(         "DIAGNÓSTICO QSK60
+" +         "Componente registrado: " +         (customElements.get("model-viewer") ? "SÍ" : "NO") +         "
+Estado: MODELO CARGADO"     ); });  found.Viewer.addEventListener("error", (event: any) => {     const detail = event.detail || {};     report(         "DIAGNÓSTICO QSK60
+" +         "URL: " + found.SrcPath + "
+" +         "ERROR: " + (detail.type || "desconocido")     ); });  found.Viewer.src = found.SrcPath;
 
                 // initially don't display:
                 found.Div.style.display = "none";
