@@ -1,25 +1,26 @@
+
 {
-    "visual": {
-        "name": "powerBIModelViewer",
-        "displayName": "PowerBIModelViewer",
-        "guid": "powerBIModelViewerF6939839B0BB4DCBAEE1B42CFB258A97",
-        "visualClassName": "Visual",
-        "version": "0.0.1",
-        "description": "glTF Viewer",
-        "supportUrl": "https://github.com/kelleyma49/powerBIModelViewer/issues",
-        "gitHubUrl": "https://github.com/kelleyma49/powerBIModelViewer"
-    },
-    "apiVersion": "2.6.0",
-    "author": {
-        "name": "Michael Kelley",
-        "email": "michael.a.kelley@gmail.com"
-    },
-    "assets": {
-        "icon": "assets/icon.png"
-    },
-    "externalJS": null,
-    "style": "style/visual.less",
-    "capabilities": "capabilities.json",
-    "dependencies": null,
-    "stringResources": []
+  "visual": {
+    "name": "powerBIModelViewer",
+    "displayName": "PowerBIModelViewer",
+    "guid": "powerBIModelViewerF6939839B0BB4DCAEE1B42CFB258A97",
+    "visualClassName": "Visual",
+    "version": "0.0.1.0",
+    "description": "glTF Viewer",
+    "supportUrl": "https://github.com/kelleyma49/powerBIModelViewer/issues",
+    "gitHubUrl": "https://github.com/kelleyma49/powerBIModelViewer"
+  },
+  "apiVersion": "2.6.0",
+  "author": {
+    "name": "Michael Kelley",
+    "email": "michael.a.kelley@gmail.com"
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": null,
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "dependencies": null,
+  "stringResources": []
 }
