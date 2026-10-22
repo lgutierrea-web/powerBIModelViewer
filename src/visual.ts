@@ -131,7 +131,7 @@ export class Visual implements IVisual {
             } else {
                 found = new ModelViewer();
                 found.SrcPath = element[0];
-                found.Viewer = new ModelViewerElement();
+                found.Viewer = document.createElement("model-viewer") as ModelViewerElement;
                 found.Div = document.createElement("div");
                 self.parentDiv.appendChild(found.Div);
                 found.Div.appendChild(found.Viewer);
