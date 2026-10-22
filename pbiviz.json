@@ -5,7 +5,7 @@
     "displayName": "PowerBIModelViewer",
     "guid": "powerBIModelViewerF6939839B0BB4DCAEE1B42CFB258A97",
     "visualClassName": "Visual",
-    "version": "0.0.2.0",
+    "version": "0.0.3.0",
     "description": "glTF Viewer",
     "supportUrl": "https://github.com/kelleyma49/powerBIModelViewer/issues",
     "gitHubUrl": "https://github.com/kelleyma49/powerBIModelViewer"
