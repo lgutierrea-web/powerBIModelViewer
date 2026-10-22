@@ -22,7 +22,7 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Instalar herramientas Power BI
-        run: npm install --no-save --legacy-peer-deps powerbi-visuals-tools
+        run: npm install --no-save --legacy-peer-deps powerbi-visuals-tools eslint
 
       - name: Compilar visual Power BI
         run: ./node_modules/.bin/pbiviz package
