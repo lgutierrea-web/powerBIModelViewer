@@ -45,7 +45,7 @@ import PrimitiveValue = powerbi.PrimitiveValue;
 import ISelectionId = powerbi.extensibility.ISelectionId;
 import ISelectionManager = powerbi.extensibility.ISelectionManager;
 
-import {ModelViewerElement} from '@google/model-viewer/dist/model-viewer';
+import '@google/model-viewer'; import {ModelViewerElement} from '@google/model-viewer/dist/model-viewer';
 
 import { VisualSettings } from "./settings";
 
