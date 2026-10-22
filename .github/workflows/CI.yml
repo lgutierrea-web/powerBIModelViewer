@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Descargar código
+      - name: Descargar codigo
         uses: actions/checkout@v4
 
       - name: Configurar Node.js
@@ -21,8 +21,11 @@ jobs:
       - name: Instalar dependencias
         run: npm install --legacy-peer-deps
 
+      - name: Instalar herramientas Power BI
+        run: npm install --no-save --legacy-peer-deps powerbi-visuals-tools
+
       - name: Compilar visual Power BI
-        run: npx pbiviz package
+        run: ./node_modules/.bin/pbiviz package
 
       - name: Guardar archivo PBIVIZ
         uses: actions/upload-artifact@v4
