@@ -24,6 +24,9 @@ jobs:
       - name: Instalar herramientas Power BI
         run: npm install --no-save --legacy-peer-deps powerbi-visuals-tools eslint
 
+      - name: Corregir dependencias AJV
+        run: npm install --no-save --legacy-peer-deps ajv@8 ajv-keywords@5
+
       - name: Compilar visual Power BI
         run: ./node_modules/.bin/pbiviz package
 
