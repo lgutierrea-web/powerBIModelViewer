@@ -18,14 +18,15 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Instalar dependencias
-        run: npm install --legacy-peer-deps
+      - name: Instalar dependencias y herramientas
+        run: |
+          npm install --legacy-peer-deps
+          npm install --no-save --legacy-peer-deps powerbi-visuals-tools@7.2.1 eslint ajv@8 ajv-keywords@5
 
-      - name: Instalar herramientas Power BI
-        run: npm install --no-save --legacy-peer-deps powerbi-visuals-tools eslint
-
-      - name: Corregir dependencias AJV
-        run: npm install --no-save --legacy-peer-deps ajv@8 ajv-keywords@5
+      - name: Verificar herramienta Power BI
+        run: |
+          test -f node_modules/.bin/pbiviz
+          ./node_modules/.bin/pbiviz --version
 
       - name: Compilar visual Power BI
         run: ./node_modules/.bin/pbiviz package
