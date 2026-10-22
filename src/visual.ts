@@ -145,14 +145,44 @@ this.target.appendChild(diagnostic);
                 found.Div = document.createElement("div");
                 self.parentDiv.appendChild(found.Div);
                 found.Div.appendChild(found.Viewer);
-                 const diagnostic = document.getElementById("qsk60-diagnostic");  const report = (message: string) => {     if (diagnostic) {         diagnostic.textContent = message;     } };  report(     "DIAGNÓSTICO QSK60
-" +     "URL: " + found.SrcPath + "
-" +     "Componente registrado: " +     (customElements.get("model-viewer") ? "SÍ" : "NO") +     "
-Estado: esperando carga..." );  found.Viewer.addEventListener("load", () => {     report(         "DIAGNÓSTICO QSK60
-" +         "Componente registrado: " +         (customElements.get("model-viewer") ? "SÍ" : "NO") +         "
-Estado: MODELO CARGADO"     ); });  found.Viewer.addEventListener("error", (event: any) => {     const detail = event.detail || {};     report(         "DIAGNÓSTICO QSK60
-" +         "URL: " + found.SrcPath + "
-" +         "ERROR: " + (detail.type || "desconocido")     ); });  found.Viewer.src = found.SrcPath;
+      
+                const panel = this.target.querySelector("#qsk60-diagnostic") as HTMLElement;
+
+                const report = (message: string) => {
+                    if (panel) {
+                        panel.textContent = message;
+                    }
+                };
+
+                const registered = typeof customElements !== "undefined" &&
+                    !!customElements.get("model-viewer");
+
+                report(
+                    "DIAGNOSTICO QSK60\n" +
+                    "URL: " + found.SrcPath + "\n" +
+                    "Componente registrado: " + (registered ? "SI" : "NO") + "\n" +
+                    "Estado: esperando carga..."
+                );
+
+                found.Viewer.addEventListener("load", () => {
+                    report(
+                        "DIAGNOSTICO QSK60\n" +
+                        "URL: " + found.SrcPath + "\n" +
+                        "Estado: MODELO CARGADO"
+                    );
+                });
+
+                found.Viewer.addEventListener("error", (event: any) => {
+                    const detail = event.detail || {};
+                    report(
+                        "DIAGNOSTICO QSK60\n" +
+                        "URL: " + found.SrcPath + "\n" +
+                        "ERROR: " + (detail.type || "desconocido")
+                    );
+                });
+
+                found.Viewer.src = found.SrcPath;
+
 
                 // initially don't display:
                 found.Div.style.display = "none";
