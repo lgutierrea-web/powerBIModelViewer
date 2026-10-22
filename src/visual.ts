@@ -147,7 +147,7 @@ export class Visual implements IVisual {
                     mouseEvent.stopPropagation();
                 });
 
-                found.ExpandIconSvg = document.createElement(null);
+                found.ExpandIconSvg = document.createElement("span");
                 found.ExpandIconSvg.innerHTML = self.expandIconSvg;
                 found.ExpandButton.appendChild(found.ExpandIconSvg);
                 found.Viewer.appendChild(found.ExpandButton);
